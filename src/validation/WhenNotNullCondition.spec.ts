@@ -41,6 +41,7 @@ describe("WhenNotNullCondition", () => {
         });
 
         it("should return false if exception occurs during lambda expression invokation", () => {
+            // @ts-ignore exception desired
             condition = new WhenNotNullCondition((t: TestClass) => t.innerProp.property);
 
             const result = condition.shouldDoValidation(testObject);
@@ -51,10 +52,10 @@ describe("WhenNotNullCondition", () => {
 });
 
 class TestClass {
-    property: string | null;
-    innerProp: InnerClass;
+    property?: string | null;
+    innerProp?: InnerClass;
 }
 
 class InnerClass {
-    property: string;
+    property?: string;
 }

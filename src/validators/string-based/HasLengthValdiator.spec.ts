@@ -11,6 +11,7 @@ describe("IsLengthValdiator", () => {
             let result = validator.isValid("foobar");
 
             expect(result).toBeTruthy();
+            // @ts-ignore inner call is an object not separate min, max params.
             expect(validatorJS.isLength).toHaveBeenCalledWith("foobar", options);
         });
 
@@ -21,6 +22,7 @@ describe("IsLengthValdiator", () => {
             let result = validator.isValid("foo");
 
             expect(result).toBeFalsy();
+            // @ts-ignore inner call is an object not separate min, max params.
             expect(validatorJS.isLength).toHaveBeenCalledWith("foo", options);
         });
 

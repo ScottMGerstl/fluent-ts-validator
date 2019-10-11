@@ -9,11 +9,11 @@ import {
 } from "../validators/type-based";
 
 class TestClass {
-    arrayProp: string[];
-    booleanProp: boolean;
-    dateProp: Date;
-    numberProp: number;
-    stringProp: string;
+    arrayProp?: string[];
+    booleanProp?: boolean;
+    dateProp?: Date;
+    numberProp?: number;
+    stringProp?: string;
 }
 
 describe("TypeValidatorBuilderImpl", () => {

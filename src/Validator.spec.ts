@@ -133,12 +133,12 @@ class TestClass {
     anyProp: any;
     stringProp1?: string;
     stringProp2?: string;
-    booleanProp: boolean;
-    innerProp: InnerClass;
+    booleanProp: boolean = false;
+    innerProp?: InnerClass;
 }
 
 class InnerClass {
-    property: string;
+    property?: string;
 }
 
 class MultipleConditionsValidator extends AbstractValidator<TestClass> {
@@ -162,13 +162,16 @@ class WhenNotEmptyConditionValidator extends AbstractValidator<TestClass> {
 class ExceptionResistantValidator1 extends AbstractValidator<TestClass> {
     constructor() {
         super();
+        // @ts-ignore exception desired
         this.validateIfString(t => t.innerProp.property).isUppercase();
     }
 }
 class ExceptionResistantValidator2 extends AbstractValidator<TestClass> {
     constructor() {
         super();
+        // @ts-ignore exception desired
         this.validateIfString(t => t.innerProp.property).isUppercase().whenDefined();
+        // @ts-ignore exception desired
         this.validateIfString(t => t.innerProp.property).isUppercase().whenNotNull();
     }
 }

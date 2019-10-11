@@ -10,14 +10,14 @@ class TestPerson {
 }
 
 class TestAddress {
-    street: string;
+    street: string = "";
     number?: string;
-    city: string;
-    postcode: string;
+    city: string = "";
+    postcode: string = "";
 }
 
 class FailureCaptor {
-    validationFailure: ValidationFailure;
+    validationFailure?: ValidationFailure;
 }
 
 let failureCaptor = new FailureCaptor();
@@ -154,8 +154,10 @@ describe("AbstractValidator", () => {
             validator.validate(person);
 
             expect(failureCaptor.validationFailure).not.toBeNull();
-            expect(failureCaptor.validationFailure.target).toBe(person);
-            expect(failureCaptor.validationFailure.propertyName).toBe("address");
+            if (failureCaptor.validationFailure) {
+                expect(failureCaptor.validationFailure.target).toBe(person);
+                expect(failureCaptor.validationFailure.propertyName).toBe("address");
+            }
         });
 
         it("should return positive validation result if invalid value is not validated due to a specified condition", () => {
@@ -204,7 +206,7 @@ describe("AbstractValidator", () => {
 });
 
 class TestAddressbook {
-    contacts: TestPerson[];
+    contacts: TestPerson[] = [];
     addresses: any;
 }
 
@@ -249,11 +251,11 @@ describe("AddressbookValidator", () => {
 });
 
 class CollectionPropClass {
-    names: string[];
-    dates: Date[];
-    numbers: number[];
-    people: TestPerson[];
-    anything: any[];
+    names: string[] = [];
+    dates: Date[] = [];
+    numbers: number[] = [];
+    people: TestPerson[] = [];
+    anything: any[] = [];
 }
 
 class CollectionValidator extends AbstractValidator<CollectionPropClass> {
@@ -332,15 +334,13 @@ describe("CollectionValidator", () => {
 });
 
 class IterablePropClass {
-    anArray: number[];
-    aSet: Set<string>;
-    aMap: Map<string, string>;
-    aReadonlyArray: ReadonlyArray<boolean>;
-    // aReadonlySet: ReadonlySet<number>;
-    aReadonlySet: Set<number>;
-    // aReadonlyMap: ReadonlyMap<string, string>;
-    aReadonlyMap: Map<string, string>;
-    iterableWithoutSize: Iterable<number>;
+    anArray: number[] = [];
+    aSet?: Set<string>;
+    aMap?: Map<string, string>;
+    aReadonlyArray?: ReadonlyArray<boolean>;
+    aReadonlySet?: Set<number>;
+    aReadonlyMap?: Map<string, string>;
+    iterableWithoutSize?: Iterable<number>;
 }
 
 class IterableValidator extends AbstractValidator<IterablePropClass> {

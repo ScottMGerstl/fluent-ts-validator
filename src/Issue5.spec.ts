@@ -59,9 +59,9 @@ enum Colors {
     Blue = "BLUE",
 }
 
-class AClass{
-    colorEnum: Colors;
-    colorString: string;
+class AClass {
+    colorEnum?: Colors;
+    colorString?: string;
 }
 
 class MyValidator extends AbstractValidator<AClass> {

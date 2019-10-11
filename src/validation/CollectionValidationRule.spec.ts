@@ -13,8 +13,8 @@ class TestClass {
 }
 
 class DeepTestClass {
-    property: TestClass;
-    notAnIterator: number;
+    property: TestClass = new TestClass();
+    notAnIterator?: number;
 }
 
 describe("CollectionValidationRule", () => {
