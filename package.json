@@ -10,21 +10,22 @@
   "main": "index.js",
   "license": "MIT",
   "devDependencies": {
-    "@types/jasmine": "2.5.54",
-    "codecov": "2.3.0",
-    "copyfiles": "1.2.0",
+    "@types/jasmine": "3.4.3",
+    "@types/validator": "10.11.3",
+    "codecov": "3.6.1",
+    "copyfiles": "2.1.1",
     "istanbul": "1.1.0-alpha.1",
-    "jasmine": "2.8.0",
-    "jasmine-console-reporter": "2.0.1",
-    "jasmine-core": "2.8.0",
-    "jasmine-ts": "0.2.1",
-    "nodemon": "1.12.0",
-    "npm-check": "5.4.5",
-    "rimraf": "2.6.1",
-    "snyk": "1.40.2",
-    "ts-node": "3.3.0",
-    "tslint": "5.7.0",
-    "typescript": "2.5.2"
+    "jasmine": "3.5.0",
+    "jasmine-console-reporter": "3.1.0",
+    "jasmine-core": "3.5.0",
+    "jasmine-ts": "0.3.0",
+    "nodemon": "1.19.3",
+    "npm-check": "5.9.0",
+    "rimraf": "3.0.0",
+    "snyk": "1.234.0",
+    "ts-node": "8.4.1",
+    "tslint": "5.20.0",
+    "typescript": "3.6.4"
   },
   "scripts": {
     "build": "rimraf build && tsc && copyfiles package.json README.md CHANGELOG.md build",
@@ -38,7 +39,7 @@
     "npm-check": "npm-check --skip-unused"
   },
   "dependencies": {
-    "validator": "8.1.0"
+    "validator": "10.11.0"
   },
   "keywords": [
     "typescript",

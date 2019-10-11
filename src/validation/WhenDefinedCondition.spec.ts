@@ -41,6 +41,7 @@ describe("WhenDefinedCondition", () => {
         });
 
         it("should return false if exception occurs during lambda expression invokation", () => {
+            // @ts-ignore exception because of undefined innerProp desired.
             condition = new WhenDefinedCondition((t: TestClass) => t.innerProp.property);
 
             const result = condition.shouldDoValidation(testObject);
@@ -51,10 +52,10 @@ describe("WhenDefinedCondition", () => {
 });
 
 class TestClass {
-    property: string | null;
-    innerProp: InnerClass;
+    property?: string | null;
+    innerProp?: InnerClass;
 }
 
 class InnerClass {
-    property: string;
+    property?: string;
 }

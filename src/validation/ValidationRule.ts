@@ -9,11 +9,11 @@ export class ValidationRule<T, TProperty> {
 
     protected validators: PropertyValidator<TProperty>[];
     protected propertyName: string;
-    protected errorCode: string;
+    protected errorCode?: string;
     protected errorMessage: string;
-    protected severity: Severity;
+    protected severity: Severity = Severity.ERROR;
     protected conditions: ValidationCondition<T>[];
-    protected callback: (failure: ValidationFailure) => void;
+    protected callback?: (failure: ValidationFailure) => void;
 
     constructor(public lambdaExpression: (input: T) => TProperty | undefined) {
         this.validators = [];

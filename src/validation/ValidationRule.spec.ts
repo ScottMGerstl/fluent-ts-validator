@@ -138,12 +138,11 @@ describe("ValidationRule", () => {
 
             let failure = rule.apply(42).getValidationFailures()[0];
 
-            expect(failure.propertyName).toBe(`(input) => {
-                return input;
-            }`);
+            expect(failure.propertyName).toBe(`(input) => {\r\n                return input;\r\n            }`);
         });
 
         it("should return failure in case exception occurs during lambda execution (due to undefined inner property)", () => {
+            // @ts-ignore exception because of undefined innerProp ignored because we actively want it.
             const rule = new ValidationRule((input: TestClass) => input.innerProp.property);
             rule.addValidator(getPositiveValidator());
 
@@ -252,7 +251,7 @@ describe("ValidationRule", () => {
 class TestClass {
     readonly property: string;
     readonly leOtherProperty1: number = 0;
-    innerProp: InnerClass;
+    innerProp?: InnerClass;
 
     constructor(property: string) {
         this.property = property;
@@ -260,7 +259,7 @@ class TestClass {
 }
 
 class InnerClass {
-    property: string;
+    property?: string;
 }
 
 function getPositiveValidator<T>(): PropertyValidator<T> {

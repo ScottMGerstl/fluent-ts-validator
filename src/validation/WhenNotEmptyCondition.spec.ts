@@ -82,6 +82,7 @@ describe("WhenNotEmptyCondition", () => {
 
     describe("shouldDoValidation() - exception handling", () => {
         beforeEach(() => {
+            // @ts-ignore exception desired
             condition = new WhenNotEmptyCondition((t: TestClass) => t.inner.property);
             testObject = new TestClass();
         });
@@ -97,9 +98,9 @@ describe("WhenNotEmptyCondition", () => {
 class TestClass {
     property?: string | null;
     anArray?: number[] | null;
-    inner: InnerClass;
+    inner?: InnerClass;
 }
 
 class InnerClass {
-    property: string;
+    property?: string;
 }
